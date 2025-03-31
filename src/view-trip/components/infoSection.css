@@ -1,0 +1,79 @@
+/** InfoSection.css **/
+
+.info-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 95%;
+  padding: 20px;
+  margin-left: 0px;
+  gap: 20px;
+  background: #EBEBEB;
+  flex-wrap: wrap;
+}
+
+.trip-image {
+  height: 300px;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  width: 100%;
+}
+
+.trip-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  gap: 10px;
+  text-align: center;
+}
+
+.trip-title {
+  color: black;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 15px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 10px;
+  background: #f56551;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.trip-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.trip-tags h3 {
+  padding: 6px 15px;
+  border-radius: 10px;
+  background: #f56551;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.share-trip {
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #082D0F;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.share-trip:hover {
+  background: #e2e8f0;
+  color: #082D0F;
+}

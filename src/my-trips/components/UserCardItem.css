@@ -1,0 +1,56 @@
+/* User Card Container */
+.user-card {
+  background-color: #eff6ff;
+  padding: clamp(12px, 3vw, 20px);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(10px, 1.5vw, 16px);
+  max-width: 380px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.user-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Trip Image */
+.user-card img {
+  object-fit: cover;
+  border-radius: 10px;
+  width: 100%;
+  aspect-ratio: 16/10;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Trip Title */
+.user-card-title {
+  font-weight: bold;
+  font-size: clamp(18px, 2vw, 24px);
+  color: #f56551;
+  margin: 0;
+}
+
+/* Trip Description */
+.user-card-description {
+  font-size: clamp(14px, 1.5vw, 18px);
+  color: #4b5563;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.user-card-description span {
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .user-card {
+    max-width: 100%;
+  }
+}

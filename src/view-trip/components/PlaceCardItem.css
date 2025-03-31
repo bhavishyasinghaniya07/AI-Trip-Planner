@@ -1,0 +1,108 @@
+.place-card-link {
+  text-decoration: none;
+  width: 100%;
+}
+
+.place-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background: #E5E7EB;
+  color: #2a2828;
+  padding: clamp(10px, 2vw, 20px);
+  margin: 20px auto;
+  border-radius: 5px;
+  transition: transform 0.2s ease-in-out;
+  max-width: 900px;
+}
+
+.place-card:hover {
+  transform: scale(1.01);
+}
+
+.place-card-image img {
+  width: clamp(180px, 30%, 250px);
+  height: clamp(120px, 15vw, 150px);
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.place-card-info,
+.best-time-section,
+.place-details {
+  flex: 1;
+  min-width: 250px;
+  padding: clamp(5px, 2vw, 15px);
+  text-align: center;
+}
+
+.place-name {
+  color: #f56551;
+  font-size: clamp(16px, 1.8vw, 20px);
+}
+
+.time-duration {
+  font-weight: medium;
+  font-size: clamp(14px, 1.2vw, 18px);
+}
+
+.ticket-price {
+  color: #688E26;
+}
+
+.best-time-section {
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  gap: 40px;
+}
+
+.best-time {
+  font-weight: medium;
+  font-size: clamp(14px, 1.2vw, 18px);
+  color: #FF5733;
+}
+
+.location-button {
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 5px;
+  background: #f56551;
+  color: white;
+  border: none;
+  width: 30%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+  font-size: clamp(14px, 1.2vw, 16px);
+}
+
+.place-details p {
+  margin: 10px 0;
+  font-size: clamp(16px, 1.2vw, 16px);
+  color: #675454;
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .place-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .place-card-image img {
+    width: 80%;
+    height: auto;
+  }
+
+  .place-card-info,
+  .best-time-section,
+  .place-details {
+    width: 100%;
+  }
+}

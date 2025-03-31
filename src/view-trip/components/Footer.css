@@ -1,0 +1,35 @@
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background-color: #f9fafb;
+  text-align: center;
+}
+
+.footer-logo {
+  height: 40px;
+  width: auto;
+}
+
+.footer-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.footer-credits {
+  font-size: 0.9rem;
+  color: #5c5858;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    padding: 20px 40px;
+  }
+}

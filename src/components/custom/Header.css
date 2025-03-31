@@ -1,0 +1,133 @@
+/* CSS File (Header.css) */
+
+.navbar {
+  width: 98%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: #f4f4f4;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 30px;
+  width: auto;
+  padding: 10px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.nav-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #f56551;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.nav-button:hover {
+  transform: scale(1.05);
+}
+
+.user-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}
+
+/* Dialog Box Styling */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.dialog-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.dialog-logo {
+  height: 60px;
+}
+
+.dialog-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #f56551;
+  margin-top: 15px;
+}
+
+.dialog-text {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.google-signin-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #f56551;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.google-signin-button:hover {
+  background-color: #e04b3a;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.back-button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background-color: #c9302c;
+}

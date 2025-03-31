@@ -1,0 +1,69 @@
+/* My Trips Page Container */
+.my-trips-container {
+  width: min(100%, 1300px);  /* Ensures it adapts to screen width */
+  margin: 0 auto;
+  padding: clamp(16px, 5vw, 40px);
+  margin-top: clamp(16px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Header Title */
+.my-trips-title {
+  font-weight: bold;
+  font-size: clamp(22px, 4vw, 36px);
+  color: #f56551;
+  margin-bottom: clamp(12px, 2vw, 24px);
+  text-align: center;
+}
+
+/* Trips Grid Layout */
+.trips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted min width for smaller screens */
+  gap: clamp(16px, 2vw, 32px);
+  width: 100%;
+  max-width: 1300px;
+}
+
+/* Placeholder Skeleton Loader */
+.trip-placeholder {
+  height: 250px;
+  background-color: #e5e7eb;
+  animation: pulse 1.5s infinite;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for Skeleton Loader */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .my-trips-container {
+    width: 95%;
+  }
+}
+
+@media (max-width: 768px) {
+  .trips-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust for tablets */
+  }
+}
+
+@media (max-width: 480px) {
+  .trips-grid {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}

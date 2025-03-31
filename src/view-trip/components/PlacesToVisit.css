@@ -1,0 +1,48 @@
+.places-container {
+  width: min(100%, 1300px);
+  margin: 0 auto;
+  padding: clamp(16px, 5vw, 40px);
+  background: #F9FAFB;
+  color: #1F2937;
+}
+
+.places-title {
+  font-weight: bold;
+  font-size: clamp(18px, 2vw, 24px);
+  margin: clamp(10px, 3vw, 20px);
+  color: #f56551;
+}
+
+.places-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.day-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.day-title {
+  padding: clamp(6px, 1vw, 12px);
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: clamp(16px, 1.8vw, 22px);
+  background: #f56551;
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.place-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

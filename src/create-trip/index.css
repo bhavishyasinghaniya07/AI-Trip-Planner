@@ -1,0 +1,474 @@
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.dialog-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.dialog-logo {
+  height: 60px;
+}
+
+.dialog-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #f56551;
+  margin-top: 15px;
+}
+
+.dialog-text {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.google-signin-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #f56551;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.google-signin-button:hover {
+  background-color: #e04b3a;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.back-button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background-color: #c9302c;
+}
+
+
+.travel-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 24px;
+  color: #f56551;
+}
+
+.description {
+  margin-top: 15px;
+  font-size: 16px;
+  color: #4f4b4b;
+}
+
+.input-container {
+  color: #f56551;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.input-title {
+  font-size: 21px;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.days-input {
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #75a1c9;
+  border-radius: 5px;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.days-input:focus {
+  border-color: #76e5fc;
+  box-shadow: 0 0 5px #76e5fc;
+}
+
+
+
+
+/* Trip Selection CSS */
+
+.container {
+  max-width: 95%;
+  padding: 30px;
+  margin-top: 30px;
+  background-color: #F4F4F4;
+  
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .budget-option,
+.traveler-option,
+.interest-option,
+.accommodation-option,
+.transport-option,
+.food-option,
+.trip-pace-option {
+  height: 20px;
+  width: 40px;
+  padding: 2px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .budget-option,
+.traveler-option,
+.interest-option,
+.accommodation-option,
+.transport-option,
+.food-option,
+.trip-pace-option {
+  height: 30px;
+  width: 70px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.budget-option h2,
+.traveler-option h2,
+.interest-option h2,
+.accommodation-option h2,
+.transport-option h2,
+.food-option h2,
+.trip-pace-option h2 {
+  font-size: 15px; /* text-3xl */
+  color: #f56551;
+  font-weight: bold;
+  margin-top: 1px;
+}
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  
+}
+
+.trip-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.budget-selection,
+.traveler-selection,
+.interest-selection,
+.accommodation-selection,
+.transport-selection,
+.food-selection,
+.trip-pace-selection {
+  display: flex;
+  
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.budget-selection h2,
+.traveler-selection h2,
+.interest-selection h2,
+.accommodation-selection h2,
+.transport-selection h2,
+.food-selection h2,
+.trip-pace-selection h2 {
+  font-size: 22px;
+  margin: 10px 0;
+  font-weight: 600;
+  margin-top: 50px;
+  color: #f56551;
+}
+
+.budget-options,
+.traveler-options,
+.interest-options,
+.accommodation-options,
+.transport-options,
+.food-options,
+.trip-pace-options {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.budget-option,
+.traveler-option,
+.interest-option,
+.accommodation-option,
+.transport-option,
+.food-option,
+.trip-pace-option {
+  height: 60px;
+  width: 120px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  background-color: #fff;
+  border-radius: 7px;
+}
+
+.budget-option:hover,
+.traveler-option:hover,
+.interest-option:hover,
+.accommodation-option:hover,
+.transport-option:hover,
+.food-option:hover,
+.trip-pace-option:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: #6db8e6;
+}
+
+.budget-option.selected,
+.traveler-option.selected,
+.interest-option.selected,
+.accommodation-option.selected,
+.transport-option.selected,
+.food-option.selected,
+.trip-pace-option.selected {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  border: 2.5px solid #6db8e6;
+}
+
+.budget-option h2,
+.traveler-option h2,
+.interest-option h2,
+.accommodation-option h2,
+.transport-option h2,
+.food-option h2,
+.trip-pace-option h2 {
+  font-size: 22px; /* text-3xl */
+  color: #f56551;
+  font-weight: bold;
+  margin-top: 1px;
+}
+
+.button-container {
+  margin: 40px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.generate-trip-button {
+  padding: 10px 20px;
+  background-color: #f56551;
+  color: white;
+  border-radius: 8px;
+  font-size: 21px;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 200px;
+  text-align: center;
+}
+
+.generate-trip-button:hover {
+  background-color: #6db8e6;
+  transform: scale(1.05);
+}
+
+.generate-trip-button:active {
+  transform: scale(0.95);
+}
+
+.generate-trip-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .button-container {
+    justify-content: center;
+  }
+
+  .generate-trip-button {
+    font-size: 18px;
+    padding: 8px 15px;
+    min-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .generate-trip-button {
+    font-size: 16px;
+    padding: 6px 12px;
+    min-width: 120px;
+  }
+}
+
+/* Dialog Box Styling */
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.dialog-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+}
+
+.dialog-logo {
+  height: 60px;
+}
+
+.dialog-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #f56551;
+  margin-top: 15px;
+}
+
+.dialog-text {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.google-signin-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #f56551;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.google-signin-button:hover {
+  background-color: #e04b3a;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.back-button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.back-button:hover {
+  background-color: #c9302c;
+}
+
