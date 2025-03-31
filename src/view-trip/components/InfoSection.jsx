@@ -3,7 +3,7 @@ import ViewTrip from "../[tripId]";
 import { FaShare } from "react-icons/fa";
 import placeholder from "../../assets/placeholder.jpg";
 import { GetPlaceDetails, PHOTO_REF_URL } from "@/service/GlobalApi";
-import "./InfoSection.css";
+import "./infoSection.css";
 
 const InfoSection = ({ trip }) => {
   useEffect(() => {
