@@ -53,10 +53,10 @@ function Header() {
                   <button className="nav-button">Home</button>
                 </a>
                 <a href="/create-trip">
-                  <button className="nav-button">+ Create Trip</button>
+                  <button className="nav-button">Plan</button>
                 </a>
                 <a href="/my-trips">
-                  <button className="nav-button">My Trips</button>
+                  <button className="nav-button">Itineraries</button>
                 </a>
                 <a href="/">
                   <button
