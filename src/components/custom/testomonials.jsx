@@ -10,6 +10,16 @@ export const testimonials = [
     borderColor: "border-purple-200",
   },
   {
+    name: "Aditi ",
+    role: "Traveler",
+    image:
+      "https://imgs.search.brave.com/HuLndKzup62a3OaXuZz52B0VXTtrIheXnyUYzoq9MhE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9wcm9m/aWxlcy5zdGFuZm9y/ZC5lZHUvcHJveHkv/YXBpL2NhcC9wcm9m/aWxlcy8xODY5NTEv/cmVzb3VyY2VzL3By/b2ZpbGVwaG90by8z/NTB4MzUwLjE1MDk5/OTM1MTE1ODMuanBn",
+    rating: 5,
+    text: "I always prefer TripGenie , whenever it comes to plan my trip efficiently , in limited time.",
+    bgColor: "bg-purple-50",
+    borderColor: "border-purple-200",
+  },
+  {
     name: "Tushar",
     role: "Student",
     image:
