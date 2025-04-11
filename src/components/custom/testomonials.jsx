@@ -1,6 +1,6 @@
 export const testimonials = [
   {
-    name: "Amit Rajput",
+    name: "Amit",
     role: "Digital nomad",
     image:
       "https://imgs.search.brave.com/gWojzx39SYVAlKjt7bUZFQNx5LSVo42dNp5ejJRai18/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuaHVkbC5jb20v/dXNlcnMvcHJvZC8x/NDUzNTUyOV9jMWY1/ZmZiNTIxNzU0YWU4/YTA5YTlmMWQzMWUz/MTM1Yy5qcGc",
@@ -20,7 +20,7 @@ export const testimonials = [
     borderColor: "border-green-200",
   },
   {
-    name: "Sanchet Mishra",
+    name: "Suhani Singh",
     role: "Student",
     image:
       "https://imgs.search.brave.com/aP2htSNLmNXtdTiPgj1FUwDYAhlSTiergH2tlDUI2-M/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zaGls/cGFyYXZlbGxhLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Mi8wNS9QaG90bzU1/d2ViLmpwZw",
