@@ -6,7 +6,7 @@ import InfoSection from "../components/InfoSection";
 import Hotels from "../components/Hotels";
 import PlacesToVisit from "../components/PlacesToVisit";
 import Footer from "../components/Footer";
-import "./ViewTrip.css";
+import "./viewTrip.css";
 
 function ViewTrip() {
   const { tripId } = useParams();
