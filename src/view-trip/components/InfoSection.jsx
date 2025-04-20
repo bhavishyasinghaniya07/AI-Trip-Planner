@@ -12,7 +12,7 @@ import {
   FaCampground,
 } from "react-icons/fa";
 import { GetPlaceDetails, PHOTO_REF_URL } from "@/service/GlobalApi";
-import "./InfoSection.css";
+import "./infoSection.css";
 
 const InfoSection = ({ trip }) => {
   const [photoUrl, setPhotoUrl] = useState("");
