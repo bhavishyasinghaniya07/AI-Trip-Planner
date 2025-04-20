@@ -1,4 +1,3 @@
-// JSX File (Header.js)
 import { googleLogout, useGoogleLogin } from "@react-oauth/google";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -10,11 +9,12 @@ import placeholder from "../../assets/placeholder.jpg";
 
 function Header() {
   const user = JSON.parse(localStorage.getItem("user"));
+  const [openDialog, setOpenDialog] = useState(false);
+  const [photoUrl, setPhotoUrl] = useState(user?.picture || placeholder);
+
   useEffect(() => {
     console.log(user);
   }, []);
-
-  const [openDialog, setOpenDialog] = useState(false);
 
   const login = useGoogleLogin({
     onSuccess: (codeResp) => GetUserProfile(codeResp),
@@ -40,78 +40,93 @@ function Header() {
       });
   };
 
+  const handleLogout = () => {
+    googleLogout();
+    localStorage.clear();
+    window.location.reload();
+  };
+
   return (
     <>
-      {!openDialog && (
-        <div className="navbar">
-          <img src={logo} className="logo" alt="Logo" />
+      <header className="header">
+        <div className="container">
+          <div className="header-wrapper">
+            <div className="logo-container">
+              <img src={logo} className="logo" alt="Logo" />
+            </div>
 
-          <div className="nav-links">
-            {user ? (
-              <>
-                <a href="/">
-                  <button className="nav-button">Home</button>
-                </a>
-                <a href="/create-trip">
-                  <button className="nav-button">Plan</button>
-                </a>
-                <a href="/my-trips">
-                  <button className="nav-button">Itineraries</button>
-                </a>
-                <a href="/">
-                  <button
-                    onClick={() => {
-                      googleLogout();
-                      localStorage.clear();
-                      window.location.reload();
-                    }}
-                    className="nav-button"
-                  >
-                    Logout
-                  </button>
-                </a>
+            <nav className="nav-container">
+              {user ? (
+                <>
+                  <div className="nav-links">
+                    <a href="/" className="nav-link">
+                      <button className="nav-button">Home</button>
+                    </a>
+                    <a href="/create-trip" className="nav-link">
+                      <button className="nav-button">Plan</button>
+                    </a>
+                    <a href="/my-trips" className="nav-link">
+                      <button className="nav-button">Itineraries</button>
+                    </a>
+                    <button
+                      onClick={handleLogout}
+                      className="nav-button logout-button"
+                    >
+                      Logout
+                    </button>
+                  </div>
 
-                <img
-                  className="user-avatar"
-                  src={user?.picture}
-                  onError={() => setPhotoUrl("placeholder")}
-                />
-              </>
-            ) : (
-              <>
-                <a href="/">
-                  <button className="nav-button">Home</button>
-                </a>
-                <button
-                  className="nav-button"
-                  onClick={() => setOpenDialog(true)}
-                >
-                  Sign In
-                </button>
-              </>
-            )}
+                  <div className="user-profile">
+                    <img
+                      className="user-avatar"
+                      src={photoUrl}
+                      alt="User"
+                      onError={() => setPhotoUrl(placeholder)}
+                    />
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="nav-links">
+                    <a href="/" className="nav-link">
+                      <button className="nav-button">Home</button>
+                    </a>
+                    <button
+                      className="nav-button signin-button"
+                      onClick={() => setOpenDialog(true)}
+                    >
+                      Sign In
+                    </button>
+                  </div>
+                </>
+              )}
+            </nav>
           </div>
         </div>
-      )}
+      </header>
 
       {openDialog && (
         <div className="dialog-overlay">
           <div className="dialog-box">
-            <img src={logo} alt="Logo" className="dialog-logo" />
-            <h2 className="dialog-title">Sign In With Google</h2>
-            <p className="dialog-text">
-              Sign in to the App with Google authentication securely.
-            </p>
-            <div className="dialog-buttons">
-              <button onClick={login} className="google-signin-button">
-                <FcGoogle className="google-icon" /> Sign In With Google
-              </button>
-              <button
-                className="back-button"
-                onClick={() => setOpenDialog(false)}
-              >
-                Back
-              </button>
+            <div className="dialog-header">
+              <img src={logo} alt="Logo" className="dialog-logo" />
+              <h2 className="dialog-title">Welcome Back</h2>
+            </div>
+            <div className="dialog-content">
+              <p className="dialog-text">
+                Sign in with Google to access your trips and create new itineraries.
+              </p>
+              <div className="dialog-buttons">
+                <button onClick={login} className="google-signin-button">
+                  <FcGoogle className="google-icon" /> Continue with Google
+                </button>
+                <button
+                  className="back-button"
+                  onClick={() => setOpenDialog(false)}
+                >
+                  Cancel
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -1,17 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import PlaceCardItem from "./PlaceCardItem";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import "./PlacesToVisit.css";
 
 function PlacesToVisit({ trip }) {
-  return (
-    <div className="places-container">
-      <h2 className="places-title">Places To Visit</h2>
+  const [expandedDay, setExpandedDay] = useState(1);
 
-      <div className="places-list">
-        {trip.TripData?.itinerary.map((item, index) => (
-          <div key={index} className="day-section">
-            <h2 className="day-title">Day : {item.day}</h2>
-            <div className="place-items">
+  if (!trip?.TripData?.itinerary || trip.TripData.itinerary.length === 0) {
+    return null;
+  }
+
+  const toggleDay = (day) => {
+    if (expandedDay === day) {
+      setExpandedDay(null);
+    } else {
+      setExpandedDay(day);
+    }
+  };
+
+  return (
+    <section className="places-section">
+      <div className="section-header">
+        <h2 className="section-title">Your Itinerary</h2>
+        <div className="section-divider"></div>
+      </div>
+
+      <div className="itinerary-container">
+        {trip.TripData.itinerary.map((item) => (
+          <div key={item.day} className="day-container">
+            <button
+              className={`day-header ${
+                expandedDay === item.day ? "active" : ""
+              }`}
+              onClick={() => toggleDay(item.day)}
+            >
+              <h3 className="day-title">Day {item.day}</h3>
+              {expandedDay === item.day ? <FaChevronUp /> : <FaChevronDown />}
+            </button>
+
+            <div
+              className={`day-content ${
+                expandedDay === item.day ? "expanded" : ""
+              }`}
+            >
               {item.places.map((place, index) => (
                 <PlaceCardItem key={index} place={place} />
               ))}
@@ -19,7 +50,7 @@ function PlacesToVisit({ trip }) {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

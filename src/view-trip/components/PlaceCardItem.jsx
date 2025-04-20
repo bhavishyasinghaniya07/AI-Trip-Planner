@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from "react";
-import placeholder from "../../assets/placeholder.jpg";
 import { Link } from "react-router-dom";
-import { MdOutlineLocationOn } from "react-icons/md";
 import { GetPlaceDetails, PHOTO_REF_URL } from "@/service/GlobalApi";
+import {
+  FaMapMarkerAlt,
+  FaClock,
+  FaTicketAlt,
+  FaCalendarAlt,
+} from "react-icons/fa";
 import "./PlaceCardItem.css";
 
 const PlaceCardItem = ({ place }) => {
-  const [photoUrl, setPhotoUrl] = useState(placeholder); // Default to placeholder
+  const [photoUrl, setPhotoUrl] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
-    if (place) {
+    if (place?.placeName) {
       GetPlacePhoto();
     }
   }, [place]);
 
   const GetPlacePhoto = async () => {
+    setIsLoading(true);
     try {
       const data = { textQuery: place?.placeName };
       const result = await GetPlaceDetails(data);
@@ -23,56 +30,105 @@ const PlaceCardItem = ({ place }) => {
         result?.data?.places?.length > 0 &&
         result.data.places[0].photos?.length > 0
       ) {
-        const photoRef = result.data.places[0].photos[0].name; // Use first photo
+        const photoRef = result.data.places[0].photos[0].name;
         const PhotoUrl = PHOTO_REF_URL.replace("{NAME}", photoRef);
         setPhotoUrl(PhotoUrl);
+      } else {
+        setPhotoUrl(
+          "https://plus.unsplash.com/premium_photo-1678481760861-000b6f8904df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        );
       }
     } catch (error) {
       console.error("Error fetching place photo:", error);
+      setPhotoUrl(
+        "https://plus.unsplash.com/premium_photo-1678481760861-000b6f8904df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  const toggleExpand = (e) => {
+    e.preventDefault();
+    setIsExpanded(!isExpanded);
+  };
+
   return (
-    <Link
-      className="place-card-link"
-      target="_blank"
-      to={`https://www.google.com/maps/search/?api=1&query=${place.placeName}`}
-    >
-      <div className="place-card">
-        <div className="place-card-image">
-          <img
-            src={photoUrl}
-            alt={place.placeName}
-            onError={() => setPhotoUrl(placeholder)} // If image fails to load, fallback to placeholder
-          />
+    <div className={`place-card ${isExpanded ? "expanded" : ""}`}>
+      <div className="place-card-content">
+        <div className="place-image-container">
+          {isLoading ? (
+            <div className="place-image-skeleton"></div>
+          ) : (
+            <img
+              src={photoUrl}
+              alt={place.placeName}
+              className="place-image"
+              onError={() =>
+                setPhotoUrl(
+                  "https://plus.unsplash.com/premium_photo-1678481760861-000b6f8904df?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                )
+              }
+            />
+          )}
         </div>
 
-        <div className="place-card-info">
-          <h2 className="place-name">{place.placeName}</h2>
-          <h3 className="time-duration">{place.timeDuration}</h3>
-          <h3 className="ticket-price">
-            Ticket Price: ₹ {place.ticketPricing}
-          </h3>
-        </div>
+        <div className="place-info">
+          <h3 className="place-name">{place.placeName}</h3>
 
-        <div className="place-details">
-          <h3>Place Details:</h3>
-          <p>{place.placeDetails}</p>
-          <p>
-            Don't forget to {place.mustDoThing} <br /> {place.suggestions}
-          </p>
-        </div>
+          <div className="place-meta">
+            <div className="meta-item">
+              <FaClock className="meta-icon" />
+              <span>{place.timeDuration}</span>
+            </div>
 
-        <div className="best-time-section">
-          <h3 className="best-time">
-            Best Time To Visit: {place.bestTimeToVisit}
-          </h3>
-          <button className="location-button">
-            <MdOutlineLocationOn /> See on Google Maps
-          </button>
+            <div className="meta-item">
+              <FaTicketAlt className="meta-icon" />
+              <span>₹ {place.ticketPricing}</span>
+            </div>
+
+            <div className="meta-item">
+              <FaCalendarAlt className="meta-icon" />
+              <span>Best time: {place.bestTimeToVisit}</span>
+            </div>
+          </div>
+
+          <div className="place-details-preview">
+            <p>{place.placeDetails.substring(0, 100)}...</p>
+          </div>
+
+          <div className="place-card-actions">
+            <button className="expand-btn" onClick={toggleExpand}>
+              {isExpanded ? "Show Less" : "Read More"}
+            </button>
+
+            <Link
+              to={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                place.placeName
+              )}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="maps-link"
+            >
+              <FaMapMarkerAlt /> View on Maps
+            </Link>
+          </div>
         </div>
       </div>
-    </Link>
+
+      {isExpanded && (
+        <div className="place-expanded-content">
+          <div className="place-details-full">
+            <h4>About this place</h4>
+            <p>{place.placeDetails}</p>
+
+            <h4>Tips and Recommendations</h4>
+            <p>Don't forget to {place.mustDoThing}</p>
+            <p>{place.suggestions}</p>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

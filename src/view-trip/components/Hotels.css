@@ -1,41 +1,56 @@
-.hotels-container {
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  padding-left: 67px;
-  padding-right: 67px;
+.hotels-section {
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.hotels-title {
-  font-weight: bold;
-  font-size: 1.5rem;
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-title {
   color: #f56551;
-  margin-bottom: 16px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  margin: 0;
+  padding-bottom: 0.75rem;
+  display: inline-block;
+}
+
+.section-divider {
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #f56551, #ff8674);
+  margin: 0 auto;
+  border-radius: 2px;
 }
 
 .hotels-grid {
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(1, 1fr); /* Default: Single column */
-  gap: 16px;
-}
-
-@media (min-width: 640px) {
-  .hotels-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
-  }
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {
-  .hotels-grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+  .hotels-section {
+    padding: 3rem 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .hotels-grid {
-    grid-template-columns: repeat(4, 1fr); /* 4 columns on large screens */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .hotels-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

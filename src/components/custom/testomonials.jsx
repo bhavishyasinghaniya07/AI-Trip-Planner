@@ -1,14 +1,14 @@
 export const testimonials = [
-  {
-    name: "Amit",
-    role: "Digital nomad",
-    image:
-      "https://imgs.search.brave.com/gWojzx39SYVAlKjt7bUZFQNx5LSVo42dNp5ejJRai18/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuaHVkbC5jb20v/dXNlcnMvcHJvZC8x/NDUzNTUyOV9jMWY1/ZmZiNTIxNzU0YWU4/YTA5YTlmMWQzMWUz/MTM1Yy5qcGc",
-    rating: 5,
-    text: "TripGenie saves time and stress by aiding travel planning, relieving indecision or uncertainty.",
-    bgColor: "bg-purple-50",
-    borderColor: "border-purple-200",
-  },
+  // {
+  //   name: "Amit",
+  //   role: "Digital nomad",
+  //   image:
+  //     "https://imgs.search.brave.com/gWojzx39SYVAlKjt7bUZFQNx5LSVo42dNp5ejJRai18/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMuaHVkbC5jb20v/dXNlcnMvcHJvZC8x/NDUzNTUyOV9jMWY1/ZmZiNTIxNzU0YWU4/YTA5YTlmMWQzMWUz/MTM1Yy5qcGc",
+  //   rating: 5,
+  //   text: "TripGenie saves time and stress by aiding travel planning, relieving indecision or uncertainty.",
+  //   bgColor: "bg-purple-50",
+  //   borderColor: "border-purple-200",
+  // },
   {
     name: "Aditi ",
     role: "Traveler",
@@ -31,7 +31,7 @@ export const testimonials = [
   },
   {
     name: "Suhani Singh",
-    role: "Student",
+    role: "Digital nomad",
     image:
       "https://imgs.search.brave.com/aP2htSNLmNXtdTiPgj1FUwDYAhlSTiergH2tlDUI2-M/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9zaGls/cGFyYXZlbGxhLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Mi8wNS9QaG90bzU1/d2ViLmpwZw",
     rating: 5,

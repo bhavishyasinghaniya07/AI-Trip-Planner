@@ -1,0 +1,39 @@
+.view-trip-container {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: clamp(1rem, 5vw, one)
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  width: 100%;
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #f56551;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: rotation 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

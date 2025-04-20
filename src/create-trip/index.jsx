@@ -11,13 +11,14 @@ import {
 import { chatSession } from "@/service/AIModel";
 import { FcGoogle } from "react-icons/fc";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 import "./index.css";
 
 import React, { useEffect, useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { addDoc, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/service/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo2.png";
@@ -49,9 +50,8 @@ function CreateTrip() {
   const onGenerateTrip = async () => {
     const user = localStorage.getItem("user");
     if (!user) {
-      setOpenDialog(true); // Ensure state updates
-      console.log("Dialog should open now");
-      return; // Ensure the function exits after setting state
+      setOpenDialog(true);
+      return;
     }
 
     if (
@@ -159,101 +159,123 @@ function CreateTrip() {
       key: "food",
       className: "food",
     },
-    {
-      title: "Preferred Trip Pace",
-      list: SelectTripPaceList,
-      key: "tripPace",
-      className: "trip-pace",
-    },
+    // {
+    //   title: "Preferred Trip Pace",
+    //   list: SelectTripPaceList,
+    //   key: "tripPace",
+    //   className: "trip-pace",
+    // },
   ];
 
   return (
-    <div className="container">
-      <div className="travel-container">
-        <h2 className="title">Tell us your travel preferences</h2>
-        <p className="description">
-          Just provide some basic information, and our trip planner will
-          generate a customized itinerary based on your preference.
-        </p>
-        <div className="input-container">
-          {/* Destination Input */}
-          <div className="w-[50%]">
-            <h2 className="input-title">Where do you want to go?</h2>
-            <GooglePlacesAutocomplete
-              apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
-              selectProps={{
-                value: place,
-                onChange: (v) => {
-                  setPlace(v);
-                  handleInputChange("location", v);
-                },
-                placeholder: "Search Destination",
-                styles: {
-                  control: (base) => ({
-                    ...base,
-                    border: "1px solid #76E5FC",
-                    borderRadius: "8px",
-                    padding: "1px",
-                  }),
-                },
-              }}
-            />
+    <div className="main-container">
+      <div className="trip-form-container">
+        <div className="header-section">
+          <h1 className="main-title">Smart Trip Planner</h1>
+          <p className="main-description">
+            Tell us your preferences, and we'll create a personalized itinerary
+            just for you
+          </p>
+        </div>
+
+        <div className="destinations-section">
+          <div className="input-group">
+            <div className="input-label">
+              <FaMapMarkerAlt className="input-icon" />
+              <h2>Where do you want to go?</h2>
+            </div>
+            <div className="google-places-wrapper">
+              <GooglePlacesAutocomplete
+                apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
+                selectProps={{
+                  value: place,
+                  onChange: (v) => {
+                    setPlace(v);
+                    handleInputChange("location", v);
+                  },
+                  placeholder: "Search for destinations...",
+                  styles: {
+                    control: (base) => ({
+                      ...base,
+                      border: "1px solid #dde1e7",
+                      borderRadius: "12px",
+                      padding: "4px 8px",
+                      boxShadow: "0 2px 4px rgba(0,0,0,0.05)",
+                      fontSize: "16px",
+                    }),
+                    placeholder: (base) => ({
+                      ...base,
+                      color: "#a0aec0",
+                    }),
+                  },
+                }}
+              />
+            </div>
           </div>
 
-          {/* Number of Days Input */}
-          <div className="w-[50%]">
-            <h2 className="input-title">How many days are you planning?</h2>
+          <div className="input-group">
+            <div className="input-label">
+              <FaCalendarAlt className="input-icon" />
+              <h2>How many days are you planning?</h2>
+            </div>
             <input
-              placeholder="Ex. 3"
+              placeholder="Enter number of days (1-10)"
               type="number"
+              min="1"
+              max="10"
               className="days-input"
               onChange={(e) => handleInputChange("noOfDays", e.target.value)}
             />
           </div>
         </div>
 
-        <div>
+        <div className="preferences-section">
           {sections.map((section, index) => (
-            <div key={index} className={`${section.className}-selection`}>
-              <h2>{section.title}</h2>
-              <div className={`${section.className}-options`}>
+            <div key={index} className="preference-card">
+              <h2 className="preference-title">{section.title}</h2>
+              <div className={`options-grid ${section.className}-options`}>
                 {section.list.map((item, idx) => (
                   <div
                     key={idx}
                     onClick={() => handleInputChange(section.key, item.title)}
-                    className={`${section.className}-option ${
+                    className={`option-item ${
                       formData?.[section.key] === item.title ? "selected" : ""
                     }`}
                   >
-                    <h2>{item.icon}</h2>
-                    <h2>{item.title}</h2>
+                    <div className="option-icon">{item.icon}</div>
+                    <div className="option-text">{item.title}</div>
                   </div>
                 ))}
               </div>
             </div>
           ))}
         </div>
-      </div>
-      {/* Generate Trip Button */}
-      <div className="button-container">
-        <button
-          disabled={loading}
-          className="generate-trip-button"
-          onClick={onGenerateTrip}
-        >
-          {loading
-            ? "Wait a few seconds, We are working on it..."
-            : "Generate Trip"}
-        </button>
+
+        <div className="action-section">
+          <button
+            disabled={loading}
+            className="generate-button"
+            onClick={onGenerateTrip}
+          >
+            {loading ? (
+              <>
+                <AiOutlineLoading3Quarters className="loading-icon spin" />
+                Creating your perfect trip...
+              </>
+            ) : (
+              "Generate My Trip Plan"
+            )}
+          </button>
+        </div>
       </div>
 
       {openDialog && (
         <div className="dialog-overlay">
           <div className="dialog-box">
             <img src={logo} alt="Logo" className="dialog-logo" />
-            <h2 className="dialog-title">Sign In With Google</h2>
+            <h2 className="dialog-title">Sign In Required</h2>
             <p className="dialog-text">
-              Sign in to the App with Google authentication securely.
+              Please sign in with Google to create and save your trip plan.
             </p>
             <div className="dialog-buttons">
               <button onClick={login} className="google-signin-button">
@@ -263,7 +285,7 @@ function CreateTrip() {
                 className="back-button"
                 onClick={() => setOpenDialog(false)}
               >
-                Back
+                Cancel
               </button>
             </div>
           </div>

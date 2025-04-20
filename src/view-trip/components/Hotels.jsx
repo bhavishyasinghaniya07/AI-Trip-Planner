@@ -1,17 +1,25 @@
 import React from "react";
-import "./Hotels.css"; // Import CSS file
 import HotelCardItem from "./HotelCardItem";
+import "./Hotels.css";
 
 function Hotels({ trip }) {
+  if (!trip?.TripData?.hotels || trip.TripData.hotels.length === 0) {
+    return null;
+  }
+
   return (
-    <div className="hotels-container">
-      <h2 className="hotels-title">Hotel Recommendations</h2>
+    <section className="hotels-section">
+      <div className="section-header">
+        <h2 className="section-title">Hotel Recommendations</h2>
+        <div className="section-divider"></div>
+      </div>
+
       <div className="hotels-grid">
-        {trip?.TripData?.hotels?.map((hotel, index) => (
+        {trip.TripData.hotels.map((hotel, index) => (
           <HotelCardItem key={index} hotel={hotel} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

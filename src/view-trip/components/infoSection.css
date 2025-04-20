@@ -1,79 +1,143 @@
-/** InfoSection.css **/
-
 .info-section {
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, #ffffff, #f0f4f8);
+}
+
+.info-banner {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 95%;
-  padding: 20px;
-  margin-left: 0px;
-  gap: 20px;
-  background: #EBEBEB;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+
+.trip-image-container {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
 }
 
 .trip-image {
-  height: 300px;
-  width: 90%;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.trip-details {
+.trip-image:hover {
+  transform: scale(1.05);
+}
+
+.image-skeleton {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.trip-info-container {
+  padding: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  width: 100%;
-  margin-top: 20px;
-  gap: 10px;
-  text-align: center;
+  gap: 1.5rem;
 }
 
 .trip-title {
-  color: black;
-  font-weight: bold;
-  font-size: 24px;
-  padding: 15px;
-  padding-left: 50px;
-  padding-right: 50px;
-  border-radius: 10px;
-  background: #f56551;
-  color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: 700;
+  color: #f56551;
+  text-align: center;
+  padding: 0.5rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(245, 101, 81, 0.1);
+  box-shadow: 0 4px 15px rgba(245, 101, 81, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
 }
 
 .trip-tags {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 0.75rem;
+  width: 100%;
 }
 
-.trip-tags h3 {
-  padding: 6px 15px;
-  border-radius: 10px;
-  background: #f56551;
+.tag {
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #f56551, #ff7b69);
   color: white;
-  font-size: 14px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(245, 101, 81, 0.3);
+  transition: all 0.2s ease;
 }
 
-.share-trip {
-  padding: 8px 12px;
-  border-radius: 10px;
+.tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(245, 101, 81, 0.4);
+}
+
+.share-trip-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #082d0f, #0a4016);
+  color: white;
+  font-weight: 600;
+  border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 10px rgba(8, 45, 15, 0.3);
   transition: all 0.3s ease;
-  background: #082D0F;
-  color: white;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.share-trip:hover {
-  background: #e2e8f0;
-  color: #082D0F;
+.share-trip-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(8, 45, 15, 0.4);
+}
+
+.share-trip-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  .info-banner {
+    flex-direction: row;
+    min-height: 400px;
+  }
+  
+  .trip-image-container {
+    width: 50%;
+    height: auto;
+  }
+  
+  .trip-info-container {
+    width: 50%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .trip-tags {
+    max-width: 90%;
+  }
 }

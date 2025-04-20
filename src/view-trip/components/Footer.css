@@ -1,35 +1,157 @@
+.site-footer {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 16px;
+  padding: 2rem 1rem;
+  margin-top: 3rem;
+  width: 100%;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+}
+
 .footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 16px;
-  background-color: #f9fafb;
-  text-align: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .footer-logo {
-  height: 40px;
+  height: 50px;
   width: auto;
+  transition: transform 0.3s ease;
 }
 
-.footer-text {
-  font-size: 1rem;
+.footer-logo:hover {
+  transform: scale(1.05);
+}
+
+.footer-slogan {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.footer-message {
+  text-align: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #f56551, #ff7b69);
+  color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(245, 101, 81, 0.2);
+  max-width: 600px;
+  width: 100%;
+}
+
+.journey-wish {
+  font-size: 1.1rem;
   font-weight: 500;
-  color: #1f2937;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.emoji {
+  font-size: 1.3rem;
 }
 
 .footer-credits {
-  font-size: 0.9rem;
-  color: #5c5858;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
 }
 
+.copyright {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.heart-icon {
+  color: #f56551;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.2); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.2); }
+  60% { transform: scale(1); }
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f56551;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(245, 101, 81, 0.3);
+  background-color: #e05547;
+}
+
+/* Responsive Styles */
 @media (min-width: 768px) {
+  .site-footer {
+    padding: 3rem 2rem;
+  }
+  
   .footer-container {
     flex-direction: row;
     justify-content: space-between;
-    text-align: left;
-    padding: 20px 40px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-branding {
+    align-items: flex-start;
+  }
+  
+  .footer-message {
+    order: 0;
+  }
+  
+  .footer-credits {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-container {
+    flex-wrap: nowrap;
+  }
+  
+  .footer-message {
+    order: 0;
+    margin: 0 2rem;
   }
 }
