@@ -185,7 +185,7 @@ export const SelectFoodList = [
   },
   {
     id: 4,
-    title: "Fast Food",
+    title: "FastFood",
     desc: "Quick and tasty bites",
     icon: "🍕",
   },
