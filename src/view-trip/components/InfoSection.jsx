@@ -20,7 +20,7 @@ const InfoSection = ({ trip }) => {
   const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
-    if (trip?.userSelection?.location?.label) {
+    if (trip?.userSelection?.location) {
       GetPlacePhoto();
     }
   }, [trip]);

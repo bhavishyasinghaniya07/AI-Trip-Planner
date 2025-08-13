@@ -66,10 +66,7 @@ function CreateTrip() {
       return;
     }
     setLoading(true);
-    const FINAL_PROMPT = AI_PROMPT.replace(
-      "{location}",
-      formData?.location?.label
-    )
+    const FINAL_PROMPT = AI_PROMPT.replace("{location}", formData?.location)
       .replace("{tripPace}", formData?.tripPace)
       .replace("{noOfDays}", formData?.noOfDays)
       .replace("{traveler}", formData?.traveler)
@@ -185,7 +182,11 @@ function CreateTrip() {
               <h2>Where do you want to go?</h2>
             </div>
             <div className="google-places-wrapper">
-              <GooglePlacesAutocomplete
+              {/* 
+                THE GOOGLE PLACES AUTOCOMPLETE IS NOT WORKING PROPERLY , ITS ASKING FOR A PAYMENT METHOD
+                SO I HAVE REPLACED IT WITH A SIMPLE INPUT FIELD 
+
+                <GooglePlacesAutocomplete
                 apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
                 selectProps={{
                   value: place,
@@ -209,6 +210,12 @@ function CreateTrip() {
                     }),
                   },
                 }}
+              /> */}
+              <input
+                type="text"
+                placeholder="Enter a destination..."
+                className="days-input"
+                onChange={(e) => handleInputChange("location", e.target.value)}
               />
             </div>
           </div>
