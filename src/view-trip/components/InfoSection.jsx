@@ -18,12 +18,53 @@ const InfoSection = ({ trip }) => {
   const [photoUrl, setPhotoUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
+  const [predictionResult, setPredictionResult] = useState(null);
 
   useEffect(() => {
     if (trip?.userSelection?.location) {
       GetPlacePhoto();
     }
   }, [trip]);
+
+  const handlePredictExpense = async () => {
+    const predictionData = {
+      place: (trip?.userSelection?.location?.label || "")
+        .split(/[\s,]+/)[0]
+        .toLowerCase(),
+      budget: (trip?.userSelection?.budget || "").toString().toLowerCase(),
+      travellingwith: (trip?.userSelection?.traveler || "").toLowerCase(),
+      interest: (trip?.userSelection?.interest || "").toLowerCase(),
+      accommodationtype: (
+        trip?.userSelection?.accommodation || ""
+      ).toLowerCase(),
+      transportmode: (trip?.userSelection?.transport || "").toLowerCase(),
+      foodtype:
+        (trip?.userSelection?.food || "").replace(" ", "").toLowerCase() ===
+        "vegetarian"
+          ? "veg"
+          : (trip?.userSelection?.food || "").toLowerCase(),
+      noofday: (trip?.userSelection?.noOfDays || "").toString().toLowerCase(),
+    };
+
+    try {
+      const response = await fetch("http://localhost:5000/predict", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(predictionData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Prediction request failed");
+      }
+      const result = await response.json();
+      setPredictionResult(result);
+    } catch (error) {
+      console.error("Error predicting expense:", error);
+      alert("Failed to predict expense.");
+    }
+  };
 
   const GetPlacePhoto = async () => {
     setIsLoading(true);
@@ -121,6 +162,44 @@ const InfoSection = ({ trip }) => {
           >
             <FaShare /> {isCopied ? "Link Copied!" : "Share Your Trip"}
           </button>
+          <button
+            className="predict-expense-btn share-trip-btn"
+            aria-label="Share trip"
+            onClick={handlePredictExpense}
+          >
+            Predict Expense
+          </button>
+          {predictionResult && (
+            <div className="text-center mt-4 p-4 rounded-lg shadow-lg bg-white text-black w-full max-w-md">
+              <h2 className="text-xl font-semibold mb-2">Predicted Expenses</h2>
+              <p>
+                <strong>Total:</strong>{" "}
+                <span className="color-green">
+                  ₹{predictionResult.total_expense}
+                </span>
+              </p>
+              <p>
+                <strong>Accommodation:</strong>{" "}
+                <span className="color-green">
+                  ₹{predictionResult.accommodation}
+                </span>
+              </p>
+              <p>
+                <strong>Food:</strong>{" "}
+                <span className="color-green">₹{predictionResult.food}</span>
+              </p>
+              <p>
+                <strong>Travel:</strong>{" "}
+                <span className="color-green">₹{predictionResult.travel}</span>
+              </p>
+              <p>
+                <strong>Per Person:</strong>{" "}
+                <span className="color-green">
+                  ₹{predictionResult.per_person}
+                </span>
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>

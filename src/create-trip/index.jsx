@@ -267,7 +267,7 @@ function CreateTrip() {
             {loading ? (
               <>
                 <AiOutlineLoading3Quarters className="loading-icon spin" />
-                Creating your perfect trip...
+                Wait..Creating your trip...
               </>
             ) : (
               "Generate My Trip Plan"
